@@ -3,11 +3,17 @@
 import { useState } from "react";
 import Image from "next/image";
 
+type PdfLinks = {
+  "Why Upskilling Matters in 2025": string;
+  "The Psychology Behind Gamification": string;
+  "The Difference Between Soft and Hard Skills": string;
+};
+
 export default function BlogPage() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   // PDF links corresponding to blog subtitles
-  const pdfLinks = {
+  const pdfLinks: PdfLinks = {
     "Why Upskilling Matters in 2025": "/pdfs/upskilling_matters_2025.pdf",
     "The Psychology Behind Gamification": "/pdfs/psychology_gamification.pdf",
     "The Difference Between Soft and Hard Skills": "/pdfs/soft_vs_hard_skills.pdf",
@@ -36,9 +42,11 @@ export default function BlogPage() {
     },
   ];
 
-  // Download PDF by subtitle key
+  // Download PDF by subtitle key with type assertion
   const downloadPDF = (subtitle: string) => {
-    const url = pdfLinks[subtitle];
+    // Assert that subtitle is a key of pdfLinks
+    if (!(subtitle in pdfLinks)) return;
+    const url = pdfLinks[subtitle as keyof PdfLinks];
     if (!url) return;
     const link = document.createElement("a");
     link.href = url;
@@ -128,7 +136,9 @@ export default function BlogPage() {
               Mastering Knowledge & Growth
             </h2>
             <p className="max-w-4xl mb-12 mx-auto md:mx-0 text-center md:text-left leading-relaxed text-gray-700 px-4 sm:px-0">
-              Knowledge is the foundation of growth. Embrace new ideas, sharpen your skills, and stay inspired with insights that empower you to achieve more in both your personal and professional journey.
+              Knowledge is the foundation of growth. Embrace new ideas, sharpen
+              your skills, and stay inspired with insights that empower you to
+              achieve more in both your personal and professional journey.
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -190,7 +200,13 @@ function SecondaryPost({
   return (
     <div className="flex flex-col h-full">
       <div className="relative h-60 mb-4 rounded-lg shadow-md overflow-hidden">
-        <Image src={img} alt={alt} width={580} height={240} className="w-full h-full object-cover" />
+        <Image
+          src={img}
+          alt={alt}
+          width={580}
+          height={240}
+          className="w-full h-full object-cover"
+        />
       </div>
       <h3 className="text-xl font-bold mb-2">{title}</h3>
       <p className="text-sm text-gray-600 mb-4">{subtitle}</p>
@@ -212,7 +228,13 @@ function KnowledgeArticle({
   return (
     <div className="flex gap-4 mb-6">
       <div className="w-24 h-24 flex-shrink-0 rounded-lg overflow-hidden shadow-md">
-        <Image src={img} alt={alt} width={96} height={96} className="w-full h-full object-cover" />
+        <Image
+          src={img}
+          alt={alt}
+          width={96}
+          height={96}
+          className="w-full h-full object-cover"
+        />
       </div>
       <div>
         <p className="text-sm text-gray-600 mb-1">{subtitle}</p>
