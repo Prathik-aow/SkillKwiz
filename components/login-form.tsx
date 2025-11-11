@@ -118,7 +118,7 @@ export default function LoginForm({ onLogin }: LoginFormProps) {
         {/* Login Button */}
         <button
           type="submit"
-          className="w-full py-3 rounded bg-gradient-to-r from-[#4ECDC4] to-[#2d8a84] text-white hover:opacity-90 font-medium"
+          className="w-full py-3 rounded bg-red-600 hover:bg-red-700 text-white font-medium transition-all"
         >
           Login
         </button>

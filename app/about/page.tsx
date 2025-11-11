@@ -121,11 +121,13 @@ export default function AboutPage() {
                 Who We Are ?
               </h2>
               <p className="text-[#272727] mb-4 md:mb-6 text-sm md:text-base leading-relaxed">
-                We are your partner in skill assessment. Our expertise lies in assessing skill levels in people and quantifying them...
+                We are your partner in skill assessment. Our expertise lies in assessing skill levels in people and quantifying them to help businesses make informed hiring and development decisions.
               </p>
-              <p className="text-sm md:text-base text-[#272727] mb-3 md:mb-4 leading-relaxed italic">
-                "SkillKwiz has a single purpose and that is to create
-                stakeholder value..."
+              <p className="text-[#272727] mb-4 md:mb-6 text-sm md:text-base leading-relaxed">
+                Our team is passionate about revolutionizing the way organizations assess skills, making the process transparent, reliable, and simple through cutting-edge technology and rigorous methodologies.
+              </p>
+              <p className="text-[#272727] mb-4 md:mb-6 text-sm md:text-base leading-relaxed italic">
+                "SkillKwiz has a single purpose and that is to create stakeholder value..."
               </p>
               <p className="text-sm md:text-base text-[#272727] font-semibold leading-relaxed">
                 -Venugopal B A <br />
@@ -176,34 +178,29 @@ export default function AboutPage() {
           <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-start">
             <div className="w-full md:w-1/3 mx-auto md:mx-0">
               <div className="relative max-w-sm mx-auto md:max-w-none">
-                <div className="bg-[#f73e5d] p-4 md:p-6">
+                <div className="bg-[#f73e5d] p-4 md:p-6 rounded-lg">
                   <Image
-                    src="/images/aboutpage/Venugopal.png?height=300&width=300"
-                    alt="CEO"
+                    src="/images/aboutpage/Venugopal.png"  
+                    alt="Venugopal B A, CEO of SkillKwiz"
                     width={300}
                     height={300}
-                    className="w-full h-auto"
+                    className="w-full h-auto rounded-md"
                   />
                 </div>
-                <div className="bg-[#f73e5d] text-white text-center py-3 font-bold text-lg md:text-xl">
+                <div className="bg-[#f73e5d] text-white text-center py-3 font-bold text-lg md:text-xl rounded-b-md mt-2">
                   CEO
                 </div>
               </div>
             </div>
             <div className="w-full md:w-2/3">
               <p className="text-[#272727] mb-4 md:mb-6 text-sm md:text-base leading-relaxed">
-                Venugopal B A, a veteran leader in the IT industry with
-                experience spanning 24 years in senior leadership roles, has
-                chosen to take on the mantle of leading SkillKwiz. His
-                understanding of one of the key challenges faced by the services
-                sector gave birth to the vision that is SkillKwiz today.
+                Venugopal B A is a visionary leader with over 24 years of experience in the IT industry, having served in senior leadership roles across various technology companies. His deep understanding of the challenges in the services sector inspired the creation of SkillKwiz.
               </p>
-              <p className="text-[#272727] text-sm md:text-base leading-relaxed">
-                With a rich background in the technology industry, he aims to
-                establish SkillKwiz as an AI first and foremost company. He is
-                poised to take SkillKwiz to its next level of growth by turning
-                it into a company that is shaped entirely by the market it
-                serves.
+              <p className="text-[#272727] mb-4 md:mb-6 text-sm md:text-base leading-relaxed">
+                Under his leadership, SkillKwiz aims to become an AI-first company that revolutionizes skill assessment. Venugopal’s commitment is to make SkillKwiz a market-driven platform that truly empowers organizations to make data-backed hiring and training decisions.
+              </p>
+              <p className="text-[#272727] mb-4 md:mb-6 text-sm md:text-base leading-relaxed">
+                His strategic vision and passion for innovation are driving the company toward rapid growth and excellence, positioning SkillKwiz as a trusted partner for businesses seeking to unlock the potential of their workforce.Our team is passionate about revolutionizing the way organizations assess skills, making the process transparent, reliable, and simple through cutting-edge technology and rigorous methodologies.Our platform combines AI-driven analytics with industry-specific benchmarks to provide highly accurate and actionable insights. We are committed to delivering trusted data that drives talent growth.
               </p>
             </div>
           </div>

@@ -21,12 +21,12 @@ export default function SiteHeader() {
           {/* Mobile Logo */}
           <Link
             href="/"
-            className="md:hidden relative group py-4 px-2 text-sm lg:text-base transition-all text-yellow-400 font-semibold"
+            className="md:hidden relative group py-4 px-2 text-sm lg:text-base transition-all text-yellow-400 font-semibold mr-2"
           >
             <div className="relative flex items-center">
-              <div className="w-auto h-14 flex items-center justify-start scale-[1.1]">
+              <div className="w-auto h-14 flex items-center justify-start scale-[1.7]">
                 <Image
-                  src="/images/Logo1.png"
+                  src="/images/Logo2.png"
                   alt="SkillKwiz Logo"
                   width={160}
                   height={60}
@@ -44,23 +44,19 @@ export default function SiteHeader() {
             onClick={toggleMenu}
             aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           >
-            {isMenuOpen ? (
-              <X className="h-6 w-6" />
-            ) : (
-              <Menu className="h-6 w-6" />
-            )}
+            {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex md:items-center md:justify-center md:flex-1">
             <Link
               href="/"
-              className="relative group py-4 px-2 text-sm lg:text-base md:px-4 transition-all text-yellow-400 font-semibold"
+              className="relative group py-4 px-2 text-sm lg:text-base md:px-4 transition-all text-yellow-400 font-semibold mr-10"
             >
               <div className="relative flex items-center">
-                <div className="w-auto h-14 flex items-center justify-start scale-[1.1]">
+                <div className="w-auto h-14 flex items-center justify-start scale-[1.8]">
                   <Image
-                    src="/images/Logo1.png"
+                    src="/images/Logo2.png"
                     alt="SkillKwiz Logo"
                     width={180}
                     height={70}

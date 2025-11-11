@@ -6,8 +6,10 @@ export default function AuthenticateSkillsSection() {
       <div className="max-w-6xl mx-auto px-6">
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
           {/* Left side stacked images */}
-          <div className="relative w-full md:w-1/3 h-[400px] md:h-[500px]">
-            <div className="absolute top-0 left-0 w-[80%] h-[80%] transform -rotate-12 hover:-rotate-6 transition-transform duration-300 z-10">
+          <div className="relative w-full md:w-1/3 h-[400px] md:h-[500px] group">
+            <div className="absolute top-0 left-0 w-[80%] h-[80%] rounded-lg object-cover
+                            transform -rotate-12 transition-transform duration-500 z-20
+                            group-hover:-translate-x-6 group-hover:rotate-0 group-hover:z-10">
               <Image
                 src="/images/homepage/skills_1.png"
                 alt="Professional working at night"
@@ -16,7 +18,9 @@ export default function AuthenticateSkillsSection() {
                 className="rounded-lg object-cover w-full h-full"
               />
             </div>
-            <div className="absolute bottom-0 left-[10%] w-[80%] h-[80%] transform -rotate-6 hover:rotate-0 transition-transform duration-300">
+            <div className="absolute bottom-0 left-[10%] w-[80%] h-[80%] rounded-lg object-cover
+                            transform -rotate-6 transition-transform duration-500 opacity-60
+                            group-hover:opacity-100 group-hover:translate-x-6 group-hover:rotate-6 group-hover:z-20">
               <Image
                 src="/images/homepage/skills_2.png"
                 alt="Professional in tech environment"
@@ -43,8 +47,10 @@ export default function AuthenticateSkillsSection() {
           </div>
 
           {/* Right side stacked images */}
-          <div className="relative w-full md:w-1/3 h-[400px] md:h-[500px]">
-            <div className="absolute top-0 right-0 w-[80%] h-[80%] transform rotate-9 hover:rotate-6 transition-transform duration-300 z-10">
+          <div className="relative w-full md:w-1/3 h-[400px] md:h-[500px] group">
+            <div className="absolute top-0 right-0 w-[80%] h-[80%] rounded-lg object-cover
+                            transform rotate-9 transition-transform duration-500 z-20
+                            group-hover:translate-x-6 group-hover:rotate-3 group-hover:z-10">
               <Image
                 src="/images/homepage/skills_3.png"
                 alt="Professional at workstation"
@@ -53,7 +59,9 @@ export default function AuthenticateSkillsSection() {
                 className="rounded-lg object-cover w-full h-full"
               />
             </div>
-            <div className="absolute bottom-0 right-[10%] w-[80%] h-[80%] transform rotate-6 hover:rotate-0 transition-transform duration-300">
+            <div className="absolute bottom-0 right-[10%] w-[80%] h-[80%] rounded-lg object-cover
+                            transform rotate-6 transition-transform duration-500 opacity-60
+                            group-hover:opacity-100 group-hover:-translate-x-6 group-hover:rotate-0 group-hover:z-20">
               <Image
                 src="/images/homepage/skills_4.png"
                 alt="Business professional looking at digital interface"

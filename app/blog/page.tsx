@@ -2,21 +2,38 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { jsPDF } from "jspdf";
+
+const dummyArticles: { [subtitle: string]: string } = {
+  "Why Upskilling Matters in 2025":
+    "Upskilling is essential to remain competitive in the fast-evolving job market of 2025. Embracing lifelong learning ensures adaptability and growth.",
+  "The Psychology Behind Gamification":
+    "Gamification leverages psychological principles like motivation and reward to enhance learning and engagement.",
+  "The Difference Between Soft and Hard Skills":
+    "Soft skills emphasize interpersonal and communication abilities, while hard skills focus on technical expertise. Both are critical in today’s workplaces.",
+  "Why Tech Skills Are Essential in 2025":
+    "Technology is transforming every industry. Having strong tech skills is vital to secure high-paying and sustainable careers.",
+  "Why Motivation Is Key to Skill Development":
+    "Motivation drives consistent learning behavior and perseverance, which are required to master new skills.",
+  "Trends to Watch in 2025":
+    "The landscape of education and work is shaped by digital innovation, microlearning, AI integration, and flexible careers.",
+};
 
 type PdfLinks = {
-  "Why Upskilling Matters in 2025": string;
-  "The Psychology Behind Gamification": string;
-  "The Difference Between Soft and Hard Skills": string;
+  [subtitle: string]: string;
 };
 
 export default function BlogPage() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
-  // PDF links corresponding to blog subtitles
+  // PDF links for references (not used for download now)
   const pdfLinks: PdfLinks = {
     "Why Upskilling Matters in 2025": "/pdfs/upskilling_matters_2025.pdf",
     "The Psychology Behind Gamification": "/pdfs/psychology_gamification.pdf",
     "The Difference Between Soft and Hard Skills": "/pdfs/soft_vs_hard_skills.pdf",
+    "Why Tech Skills Are Essential in 2025": "/pdfs/why_tech_skills_2025.pdf",
+    "Why Motivation Is Key to Skill Development": "/pdfs/why_motivation_key.pdf",
+    "Trends to Watch in 2025": "/pdfs/trends_to_watch_2025.pdf",
   };
 
   const indicatorClasses = (index: number) =>
@@ -42,19 +59,23 @@ export default function BlogPage() {
     },
   ];
 
-  // Download PDF by subtitle key with type assertion
+  // Generate and download dummy PDF dynamically
   const downloadPDF = (subtitle: string) => {
-    // Assert that subtitle is a key of pdfLinks
-    if (!(subtitle in pdfLinks)) return;
-    const url = pdfLinks[subtitle as keyof PdfLinks];
-    if (!url) return;
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = subtitle.replace(/\s+/g, "_").toLowerCase() + ".pdf";
-    link.target = "_blank";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    const doc = new jsPDF();
+    const margin = 15;
+    const maxLineWidth = 180;
+
+    // Title
+    doc.setFontSize(20);
+    doc.text(subtitle, margin, 25);
+
+    // Content
+    const text = dummyArticles[subtitle] || "Content not available.";
+    doc.setFontSize(12);
+    const splitText = doc.splitTextToSize(text, maxLineWidth);
+    doc.text(splitText, margin, 40);
+
+    doc.save(subtitle.replace(/\s+/g, "_").toLowerCase() + "_dummy_article.pdf");
   };
 
   return (
@@ -121,12 +142,14 @@ export default function BlogPage() {
               alt="Tech skills"
               title="Top 10 Tech Skills That Can Land You a High-Paying Job"
               subtitle="Why Tech Skills Are Essential in 2025"
+              onDownload={() => downloadPDF("Why Tech Skills Are Essential in 2025")}
             />
             <SecondaryPost
               img="/images/blogpage/5.png"
               alt="Learning motivation"
               title="How to Stay Motivated While Learning New Skills"
               subtitle="Why Motivation Is Key to Skill Development"
+              onDownload={() => downloadPDF("Why Motivation Is Key to Skill Development")}
             />
           </div>
 
@@ -142,42 +165,53 @@ export default function BlogPage() {
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <KnowledgeArticle
-                img="/images/blogpage/6.png"
-                alt="Online learning"
-                title="The Future of Online Learning"
-                subtitle="Trends to Watch in 2025"
-              />
-              <KnowledgeArticle
-                img="/images/blogpage/7.png"
-                alt="Career skills"
-                title="5 Essential Skills to Boost Your Career in 2025"
-                subtitle="Trends to Watch in 2025"
-              />
-              <KnowledgeArticle
-                img="/images/blogpage/8.png"
-                alt="Gamification"
-                title="How Gamification Enhances Learning & Engagement"
-                subtitle="Trends to Watch in 2025"
-              />
-              <KnowledgeArticle
-                img="/images/blogpage/1.png"
-                alt="Career boost"
-                title="5 Essential Skills to Boost Your Career in 2025"
-                subtitle="Trends to Watch in 2025"
-              />
-              <KnowledgeArticle
-                img="/images/blogpage/4.png"
-                alt="Microlearning"
-                title="The Power of Microlearning"
-                subtitle="Trends to Watch in 2025"
-              />
-              <KnowledgeArticle
-                img="/images/blogpage/2.png"
-                alt="Learning revolution"
-                title="Revolutionizing the Way We Learn"
-                subtitle="Trends to Watch in 2025"
-              />
+              {[
+                {
+                  img: "/images/blogpage/6.png",
+                  alt: "Online learning",
+                  title: "The Future of Online Learning",
+                  subtitle: "Trends to Watch in 2025",
+                },
+                {
+                  img: "/images/blogpage/7.png",
+                  alt: "Career skills",
+                  title: "5 Essential Skills to Boost Your Career in 2025",
+                  subtitle: "Trends to Watch in 2025",
+                },
+                {
+                  img: "/images/blogpage/8.png",
+                  alt: "Gamification",
+                  title: "How Gamification Enhances Learning & Engagement",
+                  subtitle: "Trends to Watch in 2025",
+                },
+                {
+                  img: "/images/blogpage/1.png",
+                  alt: "Career boost",
+                  title: "5 Essential Skills to Boost Your Career in 2025",
+                  subtitle: "Trends to Watch in 2025",
+                },
+                {
+                  img: "/images/blogpage/4.png",
+                  alt: "Microlearning",
+                  title: "The Power of Microlearning",
+                  subtitle: "Trends to Watch in 2025",
+                },
+                {
+                  img: "/images/blogpage/2.png",
+                  alt: "Learning revolution",
+                  title: "Revolutionizing the Way We Learn",
+                  subtitle: "Trends to Watch in 2025",
+                },
+              ].map(({ img, alt, title, subtitle }, index) => (
+                <KnowledgeArticle
+                  key={index}
+                  img={img}
+                  alt={alt}
+                  title={title}
+                  subtitle={subtitle}
+                  onDownload={() => downloadPDF(subtitle)}
+                />
+              ))}
             </div>
           </div>
         </div>
@@ -191,25 +225,26 @@ function SecondaryPost({
   alt,
   title,
   subtitle,
+  onDownload,
 }: {
   img: string;
   alt: string;
   title: string;
   subtitle: string;
+  onDownload: () => void;
 }) {
   return (
-    <div className="flex flex-col h-full">
+    <div className="flex flex-col h-full cursor-pointer">
       <div className="relative h-60 mb-4 rounded-lg shadow-md overflow-hidden">
-        <Image
-          src={img}
-          alt={alt}
-          width={580}
-          height={240}
-          className="w-full h-full object-cover"
-        />
+        <Image src={img} alt={alt} width={580} height={240} className="w-full h-full object-cover" />
       </div>
       <h3 className="text-xl font-bold mb-2">{title}</h3>
-      <p className="text-sm text-gray-600 mb-4">{subtitle}</p>
+      <p
+        className="text-sm text-gray-600 mb-4 underline cursor-pointer"
+        onClick={onDownload}
+      >
+        {subtitle}
+      </p>
     </div>
   );
 }
@@ -219,25 +254,26 @@ function KnowledgeArticle({
   alt,
   title,
   subtitle,
+  onDownload,
 }: {
   img: string;
   alt: string;
   title: string;
   subtitle: string;
+  onDownload: () => void;
 }) {
   return (
-    <div className="flex gap-4 mb-6">
+    <div className="flex gap-4 mb-6 cursor-pointer">
       <div className="w-24 h-24 flex-shrink-0 rounded-lg overflow-hidden shadow-md">
-        <Image
-          src={img}
-          alt={alt}
-          width={96}
-          height={96}
-          className="w-full h-full object-cover"
-        />
+        <Image src={img} alt={alt} width={96} height={96} className="w-full h-full object-cover" />
       </div>
       <div>
-        <p className="text-sm text-gray-600 mb-1">{subtitle}</p>
+        <p
+          className="text-sm text-gray-600 mb-1 underline"
+          onClick={onDownload}
+        >
+          {subtitle}
+        </p>
         <h3 className="text-lg font-bold">{title}</h3>
       </div>
     </div>
